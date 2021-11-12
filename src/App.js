@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Landing from './Components/Landing/Landing';
+import AccessContainer from './Components/Access/AccessContainer';
+import MakeSenseAppContainer from './Components/MakeSenseApp/MakeSenseAppContainer';
+import MakeSense_Main from './Components/MakeSenseApp/MakeSense_Main/MakeSense_Main';
+import MakeSense_CreateProyect from './Components/MakeSenseApp/MakeSense_CreateProyect/MakeSense_CreateProyect';
+import MakeSense_Choice from './Components/MakeSenseApp/MakeSense_Choice/MakeSense_Choice';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <BrowserRouter>
+          <Routes>
+
+            <Route path="/" exact element={<Landing/>} />
+            <Route path="/access" exact element={<AccessContainer/>} />
+            <Route path="/app" exact element={<MakeSenseAppContainer/>} >
+                <Route path="create" exact element={<MakeSense_CreateProyect/>} />
+                <Route path="main" exact element={<MakeSense_Main />} />
+                <Route path="choice" exact element={<MakeSense_Choice />} />
+            </Route>
+
+          </Routes>
+        </BrowserRouter>
+      </div>
   );
 }
 
